@@ -1,4 +1,4 @@
-*{
+/* *{
     padding: 0;
     margin: 0;
 }
@@ -15,9 +15,27 @@ flex-direction: column;
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     position: relative;
     display: flex;
-    /* left: -10%; */
+    
 }
+.bullet {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    pointer-events: none; 
+    animation: trailFade 0.5s forwards; 
+  }
 
+  
+  @keyframes trailFade {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 .shooter{
     height: 3000px;
     width: 300px;
@@ -25,10 +43,10 @@ flex-direction: column;
     z-index: 0;
     top: 30%;
     left:  85%;
-    /* background: #7fffd4; */
+    
 }
 .main{
-    /* margin-right: 200px; */
+  
     display: flex;
     height: 85%;
     width: 90%;
@@ -67,7 +85,7 @@ flex-direction: column;
    
     z-index: 3;
     position: absolute;
-    pointer-events: none; /* Prevent interaction with the SVG */
+    pointer-events: none;
     width: 50px;
     height: 50px;
   }
@@ -142,4 +160,281 @@ flex-direction: column;
         opacity: 0;
     }
 } 
-
+ */
+ * {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    cursor: none;
+  }
+  
+  .score {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: relative;
+    display: flex;
+    /* left: -10%; */
+  }
+  
+  .bullet {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    pointer-events: none; /* Make sure the trail doesn't interfere with clicks */
+    animation: trailFade 0.5s forwards; /* Trail fading animation */
+  }
+  
+  /* Animation for the bullet trail fading out */
+  @keyframes trailFade {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .shooter {
+    height: 3000px;
+    width: 300px;
+    position: relative;
+    z-index: 0;
+    top: 30%;
+    left: 85%;
+    /* background: #7fffd4; */
+  }
+  
+  .main {
+    display: flex;
+    height: 85%;
+    width: 90%;
+    gap: 1px;
+    justify-content: space-around;
+    align-items: flex-end;
+    z-index: 0;
+  }
+  
+  .column {
+    position: relative;
+    height: 100%;
+    width: 20%;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .balloon {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: red;
+    animation: rise 2s linear infinite;
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+  
+  #cursor-svg {
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    position: absolute;
+    pointer-events: none; /* Prevent interaction with the SVG */
+    width: 50px;
+    height: 50px;
+  }
+  
+  .triangle {
+    position: relative;
+    bottom: -15px;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid red;
+  }
+  
+  #balloon2 {
+    background-color: gold;
+  }
+  
+  #tri2 {
+    border-bottom: 20px solid gold;
+  }
+  
+  #balloon3 {
+    background-color: green;
+  }
+  
+  #tri3 {
+    border-bottom: 20px solid green;
+  }
+  
+  #balloon4 {
+    background-color: blue;
+  }
+  
+  #tri4 {
+    border-bottom: 20px solid blue;
+  }
+  
+  #tri5 {
+    border-bottom: 20px solid darkmagenta;
+  }
+  
+  .bomb {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+  
+  #tip {
+    position: relative;
+    top: -10px;
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+  
+  #ignition {
+    height: 30px;
+    position: relative;
+    top: -20px;
+    width: 2px;
+    background-color: black;
+  }
+  
+  @keyframes rise {
+    0% {
+      transform: translateY(0);
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateY(-600%);
+      opacity: 0;
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .main {
+      width: 80%;
+    }
+  
+    .column {
+      width: 22%;
+    }
+  
+    .balloon {
+      height: 80px;
+      width: 80px;
+    }
+  
+    #cursor-svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .main {
+      width: 70%;
+    }
+  
+    .column {
+      width: 25%;
+    }
+  
+    .balloon {
+      height: 70px;
+      width: 70px;
+    }
+  
+    #cursor-svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    body {
+      flex-direction: row;
+    }
+  
+    .shooter {
+      height: 2000px;
+      width: 200px;
+      top: 50%;
+      left: 70%;
+    }
+  
+    .main {
+      flex-direction: column;
+      width: 100%;
+      height: 50%;
+    }
+  
+    .column {
+      width: 50%;
+      height: 50%;
+    }
+  
+    .balloon {
+      height: 60px;
+      width: 60px;
+    }
+  
+    #cursor-svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .main {
+      width: 90%;
+      flex-direction: column;
+      height: 60%;
+    }
+  
+    .column {
+      width: 40%;
+      height: 50%;
+    }
+  
+    .balloon {
+      height: 50px;
+      width: 50px;
+    }
+  
+    #cursor-svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  
